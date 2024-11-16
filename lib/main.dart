@@ -25,5 +25,15 @@ class MyApp extends StatelessWidget {
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
-  @over
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+class _MainScreenState extends State<MainScreen> {
+  //TODO: 1. Deklarasikan variabel
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+    // TODO: 2. Buat properti body berupa widget yang di tampilkan
+    );
+  }
 }
