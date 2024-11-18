@@ -6,7 +6,7 @@ import 'package:wisata_candi/screen/profile_screen.dart';
 import 'package:wisata_candi/screen/search_screen.dart';
 import 'package:wisata_candi/screen/sign_in_screen.dart';
 import 'package:wisata_candi/screen/sign_up_screen.dart';
-import 'data/candi_data.dart';
+
 void main() {
   runApp(const MyApp());
 }
