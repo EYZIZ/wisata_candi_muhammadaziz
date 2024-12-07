@@ -15,7 +15,14 @@ class DetailScreen extends StatefulWidget {
 
 class _DetailScreenState extends State<DetailScreen> {
   bool isFavorite = false;
-  bool isSignedIn = false;
+  bool isSignedIn = false; // Menyimpan status sign in
+
+  @override
+  void initState() {
+    super.initState();
+    _checkSignInStatus(); //Memeriksa status sign in saat layar dimuat
+    _loadFavoriteStatus(); // Memeriksa status favorit saat layar dimuat
+  }
 
   // Memeriksa status sign in
   void _checkSignInStatus() async {
@@ -26,6 +33,7 @@ class _DetailScreenState extends State<DetailScreen> {
     });
   }
 
+  // Memeriksa status favorit
   void _loadFavoriteStatus() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     bool favorite = prefs.getBool('favorite_${widget.candi.name}') ?? false;
@@ -64,15 +72,18 @@ class _DetailScreenState extends State<DetailScreen> {
             Stack(
               children: [
                 // image utama
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20),
-                    child: Image.asset(
-                      widget.candi.imageAsset,
-                      width: double.infinity,
-                      height: 300,
-                      fit: BoxFit.cover,
+                Hero(
+                  tag: widget.candi.imageAsset,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: Image.asset(
+                        widget.candi.imageAsset,
+                        width: double.infinity,
+                        height: 300,
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
